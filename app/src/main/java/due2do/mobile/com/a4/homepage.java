@@ -6,13 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.telecom.Call;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,15 +22,13 @@ import java.util.List;
  * Created by malav on 4/5/2018.
  */
 
-public class homepage extends AppCompatActivity{
+public class homepage extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    List<Adapter.StoreData> items = new ArrayList<>();
+    List<details> items = new ArrayList<>();
     ImageButton new_recipe;
     DatabaseReference database;
-    details recipe = new details();
     Adapter recipe_adapter;
-    List<details> recipe_list= new ArrayList<>();
 
 
     @Override
@@ -43,9 +37,29 @@ public class homepage extends AppCompatActivity{
         setContentView(R.layout.homepage);
 
         new_recipe = findViewById(R.id.add_recipe);
-        recyclerView= findViewById(R.id.recipe_recycler);
+        recyclerView = findViewById(R.id.recipe_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new Adapter(this,items));
+        recyclerView.setAdapter(new Adapter(this, items));
+
+        database = FirebaseDatabase.getInstance().getReference().child("Recipe");
+
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    details storeData = ds.getValue(details.class);
+                    items.add(storeData);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        recipe_adapter = new Adapter(homepage.this, items);
+        recyclerView.setAdapter(recipe_adapter);
 
         new_recipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +67,6 @@ public class homepage extends AppCompatActivity{
                 startActivity(new Intent(homepage.this, add_recipe.class));
             }
         });
-
 
 
     }

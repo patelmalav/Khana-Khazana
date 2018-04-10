@@ -59,6 +59,4 @@ public class add_recipe extends AppCompatActivity {
         });
     }
 
-
-
 }
