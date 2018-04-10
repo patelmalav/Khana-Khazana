@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +21,7 @@ public class view_recipe extends AppCompatActivity {
     TextView name, discription, ingredients, steps;
     DatabaseReference database;
     Button back;
+    RatingBar rb;
     details details = new details();
     details viewdata = new details();
 
@@ -33,6 +35,7 @@ public class view_recipe extends AppCompatActivity {
         ingredients = findViewById(R.id.ingredients_view);
         steps = findViewById(R.id.steps_view);
         back = findViewById(R.id.back_btn);
+        rb = findViewById(R.id.rating);
 
         viewdata = (details) getIntent().getSerializableExtra("View_Data");
 
@@ -41,6 +44,7 @@ public class view_recipe extends AppCompatActivity {
             ingredients.setText(viewdata.getIngridents());
             discription.setText(viewdata.getDiscription());
             steps.setText(viewdata.getSteps());
+            rb.setRating(viewdata.getRate());
         }
 
         back.setOnClickListener(new View.OnClickListener() {

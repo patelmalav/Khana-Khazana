@@ -4,47 +4,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <SearchView
+    <!--<SearchView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp" />-->
+    
+    <EditText
+        android:id="@+id/search"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary"/>
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:background="@null">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@color/colorAccent">
-        <TextView
-            android:id="@+id/user"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:textColor="@color/colorWhite"/>
-        <TextView
-            android:id="@+id/total_recipes"
-            android:layout_width="match_parent"
-            android:layout_height="60dp" />
-    </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/add_recipe"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/add_btn"
-            android:src="@drawable/add"
-             />
-    </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recipe_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:scrollbars="vertical" />
+
+    <ImageButton
+        android:id="@+id/add_recipe"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/add_btn"
+        android:src="@drawable/add"
+        />
 </LinearLayout>

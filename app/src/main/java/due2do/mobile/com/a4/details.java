@@ -8,15 +8,16 @@ import java.io.Serializable;
 
 public class details implements Serializable{
     private String name, discription, ingridents, steps, key;
-  //  int rb;
+    float rate;
 
-//    public int getRb() {
-//        return rb;
-//    }
-//
-//    public void setRb(int rb) {
-//        this.rb = rb;
-//    }
+
+    public float getRate() {
+        return rate;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
+    }
 
     public String getKey() {
         return key;

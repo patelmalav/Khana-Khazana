@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Item> {
     Context context;
     List<details> items = new ArrayList<>();
     private DatabaseReference database;
+   // private List<details> filter;
+
     public Adapter(Context context, List<details> items){
     this.context = context;
     this.items = items;
@@ -42,18 +46,29 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Item> {
 
         holder.d_name.setText(data.getName());
         holder.d_discription.setText(data.getDiscription());
-      //  holder.rb.setRating(data.getRb());
+        holder.rb.setRating(data.getRate());
+
     }
+
+
 
     @Override
     public int getItemCount() {
         return items.size();
     }
 
+  public void filterlist(ArrayList<details> filteredlist) {
+        items = filteredlist;
+        notifyDataSetChanged();
+  }
+
+
     public class Item extends RecyclerView.ViewHolder{
         TextView d_name, d_discription;
-        ImageButton delete, edit, view;
-        //RatingBar rb;
+        RatingBar rb;
+        ImageButton delete, edit;
+        Button view;
+
         public Item(final View itemView) {
             super(itemView);
             d_name =  itemView.findViewById(R.id.dish_name);
@@ -61,7 +76,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Item> {
             delete = itemView.findViewById(R.id.delete_btn);
             edit = itemView.findViewById(R.id.edit_btn);
             view = itemView.findViewById(R.id.view_btn);
-          //  rb = (RatingBar) itemView.findViewById(R.id.rating);
+            rb = itemView.findViewById(R.id.rating);
 
 
 

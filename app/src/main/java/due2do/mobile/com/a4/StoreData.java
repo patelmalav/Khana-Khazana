@@ -7,18 +7,6 @@ package due2do.mobile.com.a4;
 public class StoreData {
     private String d_name, d_discription;
 
-//    public int getRb() {
-//        return rb;
-//    }
-//
-//    public void setRb(int rb) {
-//        this.rb = rb;
-//    }
-//
-//    int rb;
-
-
-
     public String getD_name() {
         return d_name;
     }

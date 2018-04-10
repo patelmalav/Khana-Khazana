@@ -2,12 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp">
+        android:layout_height="wrap_content"
+        >
         <TextView
             android:id="@+id/dish_name_label"
             android:layout_width="wrap_content"
@@ -26,7 +29,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp">
         <TextView
             android:id="@+id/discription_label"
@@ -36,16 +39,20 @@
             android:textSize="25dp"
             android:textColor="@color/colorPrimaryDark"/>
 
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp">
         //https://stackoverflow.com/questions/4233626/allow-multi-line-in-edittext-view-in-android
 
         <TextView
             android:id="@+id/discription_view"
-            android:inputType="textMultiLine"
+            android:singleLine="false"
             android:layout_marginLeft="10dp"
             android:ellipsize="end"
-            android:lines="8"
-            android:minLines="10"
-            android:gravity="top|left"
+            android:lines="50"
+            android:minLines="5"
+            android:gravity="left"
             android:maxLines="50"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -53,11 +60,12 @@
             android:scrollbars="vertical"
             android:textColor="@color/colorPrimaryDark"
             />
+        </ScrollView>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp">
         <TextView
             android:id="@+id/ingredients_label"
@@ -66,24 +74,30 @@
             android:text="Ingredients :"
             android:textSize="25dp"
             android:textColor="@color/colorPrimaryDark"/>
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="90dp">
+
         <TextView
             android:id="@+id/ingredients_view"
             android:inputType="textMultiLine"
             android:layout_marginLeft="10dp"
             android:lines="8"
-            android:minLines="10"
-            android:gravity="top|left"
+            android:minLines="5"
+            android:gravity="left"
             android:maxLines="50"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginEnd="5dp"
             android:scrollbars="vertical"
             android:textColor="@color/colorPrimaryDark"/>
+        </ScrollView>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp">
         <TextView
             android:id="@+id/steps_label"
@@ -92,28 +106,47 @@
             android:text="Steps :"
             android:textSize="25dp"
             android:textColor="@color/colorPrimaryDark"/>
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="120dp">
         <TextView
             android:id="@+id/steps_view"
             android:inputType="textMultiLine"
             android:layout_marginLeft="10dp"
             android:lines="8"
-            android:minLines="10"
-            android:gravity="top|left"
+            android:minLines="5"
+            android:gravity="left"
             android:maxLines="50"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_width="match_parent"
             android:layout_marginEnd="5dp"
             android:scrollbars="vertical"
             android:textColor="@color/colorPrimaryDark"/>
+        </ScrollView>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RatingBar
+            android:id="@+id/rating"
+            android:rating="0"
+            android:numStars="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"/>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/back_btn"
         android:text="Back to kitchen"
         android:textSize="25dp"
         android:textColor="@color/colorWhite"
-        android:layout_marginTop="180dp"
         android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
         android:layout_height="70dp"
         android:background="@color/colorPrimary"/>
 
