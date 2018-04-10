@@ -18,11 +18,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class add_recipe extends AppCompatActivity {
 
-    EditText D_name,D_discription, D_ingridents, D_steps;
+    EditText D_name,D_discription, D_ingridents, D_steps, key;
     ImageView D_image;
     Button submit;
     DatabaseReference database;
     details details = new details();
+    details update = new details();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,25 +39,47 @@ public class add_recipe extends AppCompatActivity {
         D_image = findViewById(R.id.image);
         submit = findViewById(R.id.add_btn);
 
+        update = (details) getIntent().getSerializableExtra("Data_on_click");
+        if (update != null){
+            D_name.setText(update.getName());
+            D_discription.setText(update.getDiscription());
+            D_steps.setText(update.getSteps());
+            D_ingridents.setText(update.getIngridents());
+        }
+
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = D_name.getText().toString();
-                String discription = D_discription.getText().toString();
-                String ingridents = D_ingridents.getText().toString();
-                String steps = D_steps.getText().toString();
+                if (update!= null) {
+                    update.setName(String.valueOf(D_name.getText()));
+                    update.setSteps(String .valueOf(D_steps.getText()));
+                    update.setIngridents(String .valueOf(D_ingridents.getText()));
+                    update.setDiscription(String.valueOf(D_discription.getText()));
+                    database.child("Recipe").child(update.getKey()).setValue(update);
+                }
+                else {
 
-                details.setName(name);
-                details.setDiscription(discription);
-                details.setIngridents(ingridents);
-                details.setSteps(steps);
-                database.child("Recipe").push().setValue(details);
+                    String name = D_name.getText().toString();
+                    String discription = D_discription.getText().toString();
+                    String ingridents = D_ingridents.getText().toString();
+                    String steps = D_steps.getText().toString();
 
+                    details.setName(name);
+                    details.setDiscription(discription);
+                    details.setIngridents(ingridents);
+                    details.setSteps(steps);
+                    database.child("Recipe").push().setValue(details);
+
+
+                }
                 startActivity(new Intent(add_recipe.this, homepage.class));
-
             }
 
         });
+
+
     }
 
 }

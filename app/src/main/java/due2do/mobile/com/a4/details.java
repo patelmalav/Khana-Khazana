@@ -1,14 +1,21 @@
 package due2do.mobile.com.a4;
 
-import android.support.v7.app.AppCompatActivity;
+import java.io.Serializable;
 
 /**
  * Created by malav on 4/6/2018.
  */
 
-public class details {
-    private String name, discription, ingridents, steps;
+public class details implements Serializable{
+    private String name, discription, ingridents, steps, key;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public String getName() {
         return name;

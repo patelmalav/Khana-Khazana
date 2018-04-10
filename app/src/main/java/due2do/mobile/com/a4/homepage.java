@@ -46,11 +46,14 @@ public class homepage extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                items.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     details storeData = ds.getValue(details.class);
+                    storeData.setKey(ds.getKey());
                     items.add(storeData);
                 }
+                recipe_adapter = new Adapter(homepage.this, items);
+                recyclerView.setAdapter(recipe_adapter);
             }
 
             @Override
@@ -58,8 +61,7 @@ public class homepage extends AppCompatActivity {
 
             }
         });
-        recipe_adapter = new Adapter(homepage.this, items);
-        recyclerView.setAdapter(recipe_adapter);
+
 
         new_recipe.setOnClickListener(new View.OnClickListener() {
             @Override

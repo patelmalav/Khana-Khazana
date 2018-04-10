@@ -19,6 +19,7 @@
                 android:gravity="bottom"/>
 
                  <ImageButton
+                     android:id="@+id/delete_btn"
                      android:layout_width="40dp"
                      android:layout_height="40dp"
                      android:layout_gravity="bottom"
@@ -26,6 +27,7 @@
                      android:background="@null"
                      android:src="@drawable/delete" />
                  <ImageButton
+                     android:id="@+id/edit_btn"
                      android:layout_width="40dp"
                      android:layout_height="40dp"
                      android:layout_gravity="bottom"
