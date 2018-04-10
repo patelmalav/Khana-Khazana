@@ -20,6 +20,7 @@
 
         <activity android:name=".add_recipe"/>
         <activity android:name=".homepage"/>
+        <activity android:name=".view_recipe"></activity>
     </application>
 
 </manifest>

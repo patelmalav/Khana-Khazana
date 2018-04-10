@@ -42,6 +42,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Item> {
 
         holder.d_name.setText(data.getName());
         holder.d_discription.setText(data.getDiscription());
+      //  holder.rb.setRating(data.getRb());
     }
 
     @Override
@@ -51,13 +52,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Item> {
 
     public class Item extends RecyclerView.ViewHolder{
         TextView d_name, d_discription;
-        ImageButton delete, edit;
+        ImageButton delete, edit, view;
+        //RatingBar rb;
         public Item(final View itemView) {
             super(itemView);
             d_name =  itemView.findViewById(R.id.dish_name);
             d_discription = itemView.findViewById(R.id.discription);
             delete = itemView.findViewById(R.id.delete_btn);
             edit = itemView.findViewById(R.id.edit_btn);
+            view = itemView.findViewById(R.id.view_btn);
+          //  rb = (RatingBar) itemView.findViewById(R.id.rating);
+
 
 
             delete.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +86,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Item> {
                     Intent EditActivity = new Intent(context,add_recipe.class);
                     EditActivity.putExtra("Data_on_click",items.get(getAdapterPosition()));
                     context.startActivity(EditActivity);
+                }
+            });
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    details details = items.get(getAdapterPosition());
+                    Context context = v.getContext();
+                    Intent ViewActivity = new Intent(context,view_recipe.class);
+                    ViewActivity.putExtra("View_Data",items.get(getAdapterPosition()));
+                    context.startActivity(ViewActivity);
+
                 }
             });
         }
