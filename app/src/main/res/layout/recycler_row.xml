@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="vertical">
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp">
+            <TextView
+                android:id="@+id/dish_name"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Dish Name"
+                android:textSize="20dp"
+                android:gravity="bottom"/>
+
+                 <ImageButton
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
+                     android:layout_gravity="bottom"
+                     android:layout_marginLeft="120dp"
+                     android:background="@null"
+                     android:src="@drawable/delete" />
+                 <ImageButton
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
+                     android:layout_gravity="bottom"
+                     android:background="@null"
+                     android:src="@drawable/edit" />
+             </LinearLayout>
+            <TextView
+                android:id="@+id/discription"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Discription"
+                android:textColor="@color/colorPrimaryDark"/>
+        </LinearLayout>
+</LinearLayout>
